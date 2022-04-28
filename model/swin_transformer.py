@@ -100,7 +100,6 @@ class Mlp(nn.Module):
         x   = x.view(B_, N_, C_)
 
         return x
-        # TODO: 返回的x的张量维度不符，但B,H,W在该函数里未知，故需要在外面进行维度变换
 
 
 class WindowAttention(nn.Moudle):
@@ -342,9 +341,7 @@ class SwinTransformerBlock(nn.Module):
             x = shifted_x
         x = x.view(B, H * W, C)
         x = shortcut + self.drop_path(x)
-        # TODO: self.mlp返回的x的维度是[B*H*W, C], 故这里需要进行变换张量维度
-        # x = x + self.drop_path(self.mlp(self.norm2(x)))
-        x = x + self.drop_path(self.mlp(self.norm2(x)).view(B, H * W, C))
+        x = x + self.drop_path(self.mlp(self.norm2(x)))
 
         return x
 
