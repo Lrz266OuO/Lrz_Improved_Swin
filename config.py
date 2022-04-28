@@ -1,10 +1,3 @@
-# --------------------------------------------------------
-# Swin Transformer
-# Copyright (c) 2021 Microsoft
-# Licensed under The MIT License [see LICENSE for details]
-# Written by Ze Liu
-# --------------------------------------------------------'
-
 import os
 import yaml
 from yacs.config import CfgNode as CN
@@ -20,7 +13,7 @@ _C.BASE = ['']
 _C.DATA = CN()
 # Batch size for a single GPU, could be overwritten by command line argument
 _C.DATA.BATCH_SIZE = 128
-# Path to dataset, could be overwritten by command line argument
+# TODO: Path to dataset, could be overwritten by command line argument
 _C.DATA.DATA_PATH = ''
 # TODO: Dataset name
 _C.DATA.DATASET = 'imagenet'
@@ -68,7 +61,9 @@ _C.MODEL.SWIN.EMBED_DIM = 96
 _C.MODEL.SWIN.DEPTHS = [2, 2, 6, 2]
 _C.MODEL.SWIN.NUM_HEADS = [3, 6, 12, 24]
 _C.MODEL.SWIN.WINDOW_SIZE = 7
-_C.MODEL.SWIN.MLP_RATIO = 4.
+# TODO: 修改mlp_ratio的值，我暂时定为0.5，可能更低
+#_C.MODEL.SWIN.MLP_RATIO = 4.
+_C.MODEL.SWIN.MLP_RATIO = 0.5
 _C.MODEL.SWIN.QKV_BIAS = True
 _C.MODEL.SWIN.QK_SCALE = None
 _C.MODEL.SWIN.APE = False
